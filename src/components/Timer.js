@@ -1,10 +1,15 @@
+import { useState } from "react";
+
 export const Timer = (props) => {
+  const [time, setTime] = useState(0);
+
   setTimeout(() => {
-    let time = 0;
-  }, 1000)
+    setTime(time + 1);
+  }, 1000);
+
   return (
     <div>
-      <h2>Timer: 0 sec.</h2>
+      <h2>Timer: {time} sec.</h2>
     </div>
   );
 };
