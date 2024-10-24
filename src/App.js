@@ -110,7 +110,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Header>Librarys</Header>
-        <Timer />
+        <Timer start={5} />
         <BookList books={books} />
         <img src={logo} className="App-logo" alt="logo" />
 
