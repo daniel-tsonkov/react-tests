@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { BookList } from './components/BookList';
 import React from 'react';
 import { Timer } from './components/Timer';
+import { Clicker } from './components/Clicker';
 
 function App() {
 
@@ -111,6 +112,7 @@ function App() {
       <header className="App-header">
         <Header>Librarys</Header>
         <Timer start={5} />
+        <Clicker />
         <BookList books={books} />
         <img src={logo} className="App-logo" alt="logo" />
 
