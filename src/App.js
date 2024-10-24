@@ -3,6 +3,7 @@ import './App.css';
 import { Header } from './components/Header';
 import { BookList } from './components/BookList';
 import React from 'react';
+import { Timer } from './components/Timer';
 
 function App() {
 
@@ -108,7 +109,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header title="from JSX" />
+        <Header>Librarys</Header>
+        <Timer />
         <BookList books={books} />
         <img src={logo} className="App-logo" alt="logo" />
 
