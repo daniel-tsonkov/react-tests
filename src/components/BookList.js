@@ -1,32 +1,26 @@
 import { Book } from "./Book";
 
 export const BookList = (props) => {
+  const bookElements = [];
+
+  for (const book of props.books) {
+    bookElements.push(
+      <li>
+        <article>
+          <h2>{book.title}</h2>
+          <div>Year: {book.year}</div>
+          <div>Price: {book.price}</div>
+          <footer>
+            <span>Author: {book.author}</span>
+          </footer>
+        </article>
+      </li>
+    )
+  };
+
   return (
     <ul>
-      <Book
-        title={props.books[0].title}
-        author={props.books[0].author}
-        year={props.books[0].year}
-        price={props.books[0].price}
-      />
-      <Book
-        title={props.books[1].title}
-        author={props.books[1].author}
-        year={props.books[1].year}
-        price={props.books[1].price}
-      />
-      <Book
-        title={props.books[2].title}
-        author={props.books[2].author}
-        year={props.books[2].year}
-        price={props.books[2].price}
-      />
-      <Book
-        title={props.books[3].title}
-        author={props.books[3].author}
-        year={props.books[3].year}
-        price={props.books[3].price}
-      />
+      {bookElements}
     </ul>
   );
 };
