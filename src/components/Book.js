@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export const Book = (props) => {
   const [highlited, setHighlited] = useState(false);
-  const [marked, setMarkerd] = useState(false);
+  const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
     console.log('M');
@@ -14,17 +14,18 @@ export const Book = (props) => {
 
   useEffect(() => {
     console.log('Double ' + props.title);
-  }, [marked, props.title]);
+  }, [deleted, props.title]);
+
   const clickHandler = () => {
     setHighlited(state => !state);
   };
 
   const deleteHandler = () => {
-    setMarkerd(state => !state);
+    setDeleted(state => !state);
   };
 
   let style = {};
-  if (marked) {
+  if (deleted) {
     style.backgroundColor = 'red';
   }
   if (highlited) {
@@ -38,9 +39,11 @@ export const Book = (props) => {
         <div>Year: {props.year}</div>
         <div>Price: {props.price}</div>
         <footer>
-          <button onClick={clickHandler}>Highlight</button>
-          <button onClick={deleteHandler}>Delete</button>
           <span>Author: {props.author}</span>
+          <div>
+            <button onClick={clickHandler}>Highlight</button>
+            <button onClick={deleteHandler}>Delete</button>
+          </div>
         </footer>
       </article>
     </li>
