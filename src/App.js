@@ -1,10 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import { Header } from './components/Header';
 import { BookList } from './components/BookList';
 import React from 'react';
-import { Timer } from './components/Timer';
-import { Clicker } from './components/Clicker';
 
 function App() {
 
