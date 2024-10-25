@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Book = (props) => {
   const [highlited, setHighlited] = useState(false);
 
+  useEffect(() => {
+    console.log('M');
+  }, []);
+  useEffect(() => {
+    console.log('UP' + props.title);
+  }, [highlited]);
+
   const clickHandler = () => {
-    setHighlited(state => !state);
+    setHighlited(statez => !statez);
+  };
+
+  const doubleClickHandler = () => {
+
   };
 
   let style = {};
@@ -14,7 +25,7 @@ export const Book = (props) => {
 
   return (
 
-    <li onClick={clickHandler} style={style}>
+    <li onClick={clickHandler} onDoubleClick={doubleClickHandler} style={style}>
       <article>
         <h2>{props.title}</h2>
         <div>Year: {props.year}</div>
