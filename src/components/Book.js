@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export const Book = (props) => {
   const [highlited, setHighlited] = useState(false);
+  const [marked, setMarkerd] = useState(false);
 
   useEffect(() => {
     console.log('M');
@@ -11,16 +12,19 @@ export const Book = (props) => {
   }, [highlited]);
 
   const clickHandler = () => {
-    setHighlited(statez => !statez);
+    setHighlited(state => !state);
   };
 
   const doubleClickHandler = () => {
-
+    console.log('Double Click');
+    setMarkerd(state => !state);
   };
 
   let style = {};
   if (highlited) {
     style.backgroundColor = 'blue';
+  } else if (marked) {
+    style.backgroundColor = 'red';
   }
 
   return (
