@@ -7,34 +7,39 @@ export const Book = (props) => {
   useEffect(() => {
     console.log('M');
   }, []);
-  useEffect(() => {
-    console.log('UP' + props.title);
-  }, [highlited]);
 
+  useEffect(() => {
+    console.log('UP ' + props.title);
+  }, [highlited, props.title]);
+
+  useEffect(() => {
+    console.log('Double ' + props.title);
+  }, [marked, props.title]);
   const clickHandler = () => {
     setHighlited(state => !state);
   };
 
-  const doubleClickHandler = () => {
-    console.log('Double Click');
+  const deleteHandler = () => {
     setMarkerd(state => !state);
   };
 
   let style = {};
-  if (highlited) {
-    style.backgroundColor = 'blue';
-  } else if (marked) {
+  if (marked) {
     style.backgroundColor = 'red';
   }
-
+  if (highlited) {
+    style.backgroundColor = 'blue';
+  };
   return (
 
-    <li onClick={clickHandler} onDoubleClick={doubleClickHandler} style={style}>
+    <li style={style}>
       <article>
         <h2>{props.title}</h2>
         <div>Year: {props.year}</div>
         <div>Price: {props.price}</div>
         <footer>
+          <button onClick={clickHandler}>Highlight</button>
+          <button onClick={deleteHandler}>Delete</button>
           <span>Author: {props.author}</span>
         </footer>
       </article>
