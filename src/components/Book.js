@@ -4,12 +4,17 @@ export const Book = (props) => {
   const [highlited, setHighlited] = useState(false);
 
   const clickHandler = () => {
-    highlited(true);
+    setHighlited(state => !state);
   };
+
+  let style = {};
+  if (highlited) {
+    style.backgroundColor = 'blue';
+  }
 
   return (
 
-    <li onClick={clickHandler}>
+    <li onClick={clickHandler} style={style}>
       <article>
         <h2>{props.title}</h2>
         <div>Year: {props.year}</div>
