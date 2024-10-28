@@ -1,86 +1,26 @@
+import { useEffect, useState } from 'react';
+import { TodoItem } from './TodoItem';
+
 export const TodoList = () => {
+  const { todos, setTodos } = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:3030/jsonstore/todos')
+      .then(res => res.json())
+      .then(result => {
+        setTodos(Object.values(result));
+      })
+  }, []);
   return (
-    <table class="table">
+    <table className="table">
       <thead>
         <tr>
-          <th class="table-header-task">Task</th>
-          <th class="table-header-status">Status</th>
-          <th class="table-header-action">Action</th>
+          <th className="table-header-task">Task</th>
+          <th className="table-header-status">Status</th>
+          <th className="table-header-action">Action</th>
         </tr>
       </thead>
       <tbody>
-
-        <tr class="todo is-completed">
-          <td>Give dog a bath</td>
-          <td>Complete</td>
-          <td class="todo-action">
-            <button class="btn todo-btn">Change status</button>
-          </td>
-        </tr>
-
-        <tr class="todo is-completed">
-          <td>Do laundry</td>
-          <td>Complete</td>
-          <td class="todo-action">
-            <button class="btn todo-btn">Change status</button>
-          </td>
-        </tr>
-
-        <tr class="todo">
-          <td>Vacuum floor</td>
-          <td>Incomplete</td>
-          <td class="todo-action">
-            <button class="btn todo-btn">Change status</button>
-          </td>
-        </tr>
-
-        <tr class="todo is-completed">
-          <td>Feed cat</td>
-          <td>Complete</td>
-          <td class="todo-action">
-            <button class="btn todo-btn">Change status</button>
-          </td>
-        </tr>
-
-        <tr class="todo">
-          <td>Change light bulbs</td>
-          <td>Incomplete</td>
-          <td class="todo-action">
-            <button class="btn todo-btn">Change status</button>
-          </td>
-        </tr>
-
-        <tr class="todo is-completed">
-          <td>Feed cat</td>
-          <td>Complete</td>
-          <td class="todo-action">
-            <button class="btn todo-btn">Change status</button>
-          </td>
-        </tr>
-
-        <tr class="todo">
-          <td>Change light bulbs</td>
-          <td>Incomplete</td>
-          <td class="todo-action">
-            <button class="btn todo-btn">Change status</button>
-          </td>
-        </tr>
-
-        <tr class="todo is-completed">
-          <td>Go to Store</td>
-          <td>Completed</td>
-          <td class="todo-action">
-            <button class="btn todo-btn">Change status</button>
-          </td>
-        </tr>
-
-        <tr class="todo">
-          <td>Fill gas tank</td>
-          <td>Incomplete</td>
-          <td class="todo-action">
-            <button class="btn todo-btn">Change status</button>
-          </td>
-        </tr>
+        {todos.map(todo => <TodoItem key={todo._id} {...todo} />)}
       </tbody>
     </table>
   );
