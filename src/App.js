@@ -1,6 +1,7 @@
 import './App.css';
 import { BookList } from './components/BookList';
 import React from 'react';
+import { CharacterList } from './components/CharacterList';
 
 function App() {
 
@@ -106,6 +107,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <CharacterList />
         <BookList books={books} />
       </header>
     </div>
