@@ -1,13 +1,19 @@
+import { useEffect, useState } from "react";
+
 export const CharacterList = () => {
-  fetch(`https://swapi.dev/api/people/2`)
-    .then(res => res.json())
-    .then(characters => {
-      console.log(characters);
-    });
+  const [characters, setCharacters] = useState();
+
+  useEffect(() => {
+    fetch(`https://swapi.dev/api/people/2`)
+      .then(res => res.json())
+      .then(result => {
+        setCharacters(result);
+      });
+  }, []);
 
   return (
     <ul>
-      <li>Loading...</li>
+      <li>{characters?.name || 'Loading...'}</li>
     </ul>
   );
 }
