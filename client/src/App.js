@@ -1,13 +1,10 @@
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+
 function App() {
   return (
     <div>
-      <header class="navigation-header">
-        <span class="navigation-logo">
-          <img src="/images/todo-icon.png" alt="todo-logo" />
-        </span>
-        <span class="spacer"></span>
-        <span class="navigation-description">Todo List</span>
-      </header>
+      <Header />
 
       <main class="main">
 
@@ -113,9 +110,7 @@ function App() {
         </section>
       </main>
 
-      <footer class="footer">
-        <p>Copyright © designed by Mihail Valkov</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
