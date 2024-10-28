@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./Book.module.css";
 
 export const Book = (props) => {
   const [highlited, setHighlited] = useState(false);
@@ -40,10 +41,8 @@ export const Book = (props) => {
         <div>Price: {props.price}</div>
         <footer>
           <span>Author: {props.author}</span>
-          <div>
-            <button onClick={clickHandler}>Highlight</button>
-            <button onClick={deleteHandler}>Delete</button>
-          </div>
+          <button onClick={clickHandler}>Highlight</button>
+          <button onClick={deleteHandler}>Delete</button>
         </footer>
       </article>
     </li>
