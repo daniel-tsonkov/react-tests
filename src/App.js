@@ -108,7 +108,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <CharacterList />
-        <BookList books={books} />
+        {/*<BookList books={books} />*/}
       </header>
     </div>
   );

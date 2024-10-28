@@ -13,6 +13,7 @@ export const CharacterList = () => {
 
   return (
     <ul>
+      {!characters.length && <li>Loading...</li>}
       {characters.map(e => (
         <li key={e.name}>{e.name}</li>
       ))}
