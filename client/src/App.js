@@ -3,7 +3,7 @@ import { Header } from "./components/common/Header";
 import './App.css';
 import { Footer } from "./components/common/Footer";
 import { Search } from "./components/search/Search";
-import { UserSection } from "./components/user-section/UserSection";
+import { UserList } from "./components/user-list/UserList";
 
 /*http://localhost:3005/api/users/
 settings as - Body, raw, JSON
@@ -47,7 +47,7 @@ function App() {
           <Search />
 
           {/* <!-- Table component --> */}
-          <UserSection />
+          <UserList users={users} />
 
           {/* <!-- New user button  --> */}
           <button className="btn-add btn">Add new user</button>
