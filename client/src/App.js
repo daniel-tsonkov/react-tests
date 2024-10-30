@@ -1,4 +1,11 @@
-{/*http://localhost:3005/api/users/
+import { useState, useEffect } from "react";
+import { Header } from "./components/common/Header";
+import './App.css';
+import { Footer } from "./components/common/Footer";
+import { Search } from "./components/search/Search";
+import { UserSection } from "./components/user-section/UserSection";
+
+/*http://localhost:3005/api/users/
 settings as - Body, raw, JSON
 {
   "firstName": "Pesho",
@@ -13,14 +20,21 @@ settings as - Body, raw, JSON
     "streetNumber": 12
   }
 }*/
-}
-import { Header } from "./components/common/Header";
-import './App.css';
-import { Footer } from "./components/common/Footer";
-import { Search } from "./components/search/Search";
-import { UserSection } from "./components/user-section/UserSection";
+
+const baseUrl = 'http://localhost:3005/api'
 
 function App() {
+  const [users, setusers] = useState([]);
+  useEffect(() => {
+    fetch(`${baseUrl}/users`)
+      .then(res => res.json)
+      .then(result => {
+        setusers(result.users)
+      });
+  }, []);
+
+  console.log(users);
+
   return (
     <div className="App">
       <Header />
