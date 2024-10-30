@@ -26,8 +26,8 @@ const baseUrl = 'http://localhost:3005/api'
 function App() {
   const [users, setusers] = useState([]);
   useEffect(() => {
-    fetch(`${baseUrl}/users`)
-      .then(res => res.json)
+    fetch(`${baseUrl}/users/`)
+      .then(res => res.json())
       .then(result => {
         setusers(result.users)
       });
