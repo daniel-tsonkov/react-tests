@@ -1,6 +1,8 @@
 import { UserItem } from "./user-item/UserItem";
 
-export const UserList = ({ users }) => {
+export const UserList = ({
+  users,
+}) => {
   return (
     <div className="table-wrapper">
       <table className="table">

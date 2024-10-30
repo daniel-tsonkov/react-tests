@@ -1,4 +1,10 @@
-export const UserItem = ({ firstName, lastName, email, phoneNumber, createdAt }) => {
+export const UserItem = ({
+  firstName,
+  lastName,
+  email,
+  phoneNumber,
+  createdAt
+}) => {
   return (
     <tr>
       <td>
