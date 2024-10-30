@@ -1,3 +1,19 @@
+{/*http://localhost:3005/api/users/
+settings as - Body, raw, JSON
+{
+  "firstName": "Pesho",
+  "lastName": "Ivanov",
+  "email": "pesho.ivanov@abv.bg",
+  "imageUrl": "https://stock.adobe.com/search?k=personring",
+  "phoneNumber": "0888111222",
+  "address": {
+    "country": "Bulgaria",
+    "city": "Sofia",
+    "street": "blv. Hristo Botev",
+    "streetNumber": 12
+  }
+}*/
+}
 import { Header } from "./components/common/Header";
 import './App.css';
 import { Footer } from "./components/common/Footer";
