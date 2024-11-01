@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+
+import * as userServices from './Services/userService'
+
 import { Header } from "./components/common/Header";
 import './App.css';
 import { Footer } from "./components/common/Footer";
@@ -21,16 +24,12 @@ settings as - Body, raw, JSON
   }
 }*/
 
-const baseUrl = 'http://localhost:3005/api'
-
 function App() {
   const [users, setusers] = useState([]);
+
   useEffect(() => {
-    fetch(`${baseUrl}/users/`)
-      .then(res => res.json())
-      .then(result => {
-        setusers(result.users)
-      });
+    userServices.getAll()
+      .then(users => setusers(users))
   }, []);
 
   console.log(users);
