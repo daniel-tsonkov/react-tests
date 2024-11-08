@@ -1,18 +1,26 @@
+import { useState } from "react";
+
+import * as userService from '../../Services/userService'
+
 import { UserDetails } from "./user-details/UserDetails";
 import { UserItem } from "./user-item/UserItem";
+
 
 export const UserList = ({
     users,
 }) => {
-    const detailsClickHandler = () => {
-        console.log('clicked');
-
+    const [selectedUser, setSelectedUser] = useState(null);
+    const detailsClickHandler = (userId) => {
+        userService.getOne(userId)
+            .then(user => {
+                setSelectedUser(user);
+            });
     }
 
     return (
         <div className="table-wrapper">
 
-            {/* <UserDetails /> */}
+            {selectedUser && <UserDetails />}
 
             <table className="table">
                 <thead>
@@ -73,7 +81,7 @@ export const UserList = ({
                     {/* <!-- Table row component --> */}
                     {users.map(user =>
                         <tr key={user._id}>
-                            <UserItem {...user} />
+                            <UserItem user={user} onDetailsClick={detailsClickHandler} />
                         </tr>)}
                 </tbody>
             </table>
