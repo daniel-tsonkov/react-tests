@@ -6,7 +6,7 @@ import { UserAction } from "./UserListConstants";
 import { UserDetails } from "./user-details/UserDetails";
 import { UserItem } from "./user-item/UserItem";
 import { UserEdit } from "./user-edit/UserEdit";
-
+import { UserDelete } from "./user-delete/UserDelete";
 
 
 export const UserList = ({
@@ -40,7 +40,15 @@ export const UserList = ({
             }
 
             {userAction.action === UserAction.Edit &&
-                <UserEdit user={userAction.user}
+                <UserEdit
+                    user={userAction.user}
+                    onClose={closeHandler}
+                />
+            }
+
+            {userAction.action === UserAction.Delete &&
+                <UserDelete
+                    user={userAction.user}
                     onClose={closeHandler}
                 />
             }
