@@ -34,7 +34,23 @@ export const UserList = ({
         e.preventDefault();
 
         const formData = new FormData(e.target);
-        const userData = Object.fromEntries(formData);
+        const {
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            imageUrl,
+            ...address
+        } = Object.fromEntries(formData);
+
+        const userData = {
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            imageUrl,
+            address,
+        }
 
         userService.create(userData)
             .then(user => {
