@@ -57,7 +57,13 @@ export const UserList = () => {
 
         userService.create(userData)
             .then(user => {
-                setusers(pldUsers => [...pldUsers, user]);
+                setusers(oldUsers => [...oldUsers, user]);
+                closeHandler();
+            });
+
+        userService.edit(userData)
+            .then(user => {
+                setusers(oldUsers => [...oldUsers, user]);
                 closeHandler();
             });
     }

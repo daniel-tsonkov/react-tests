@@ -1,6 +1,7 @@
 export const UserEdit = ({
   user,
   onClose,
+  onUserEdit
 }) => {
   return (
     <div className="overlay">
@@ -18,7 +19,7 @@ export const UserEdit = ({
               </svg>
             </button>
           </header>
-          <form>
+          <form onSubmit={onUserEdit}>
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="firstName">First name</label>
