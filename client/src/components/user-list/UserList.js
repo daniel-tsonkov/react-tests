@@ -31,13 +31,18 @@ export const UserList = ({
     }
 
     const detailsCloseHandler = () => {
-        setSelectedUser(null); //затваря прозореца
+        setUserAction({ use: null, action: null }); //затваря прозореца
     }
 
     return (
         <div className="table-wrapper">
 
-            {selectedUser && <UserDetails user={selectedUser} onClose={detailsCloseHandler} />}
+            {userAction.action === UserAction.Details &&
+                <UserDetails
+                    user={userAction.user}
+                    onClose={detailsCloseHandler}
+                />
+            }
 
             <table className="table">
                 <thead>

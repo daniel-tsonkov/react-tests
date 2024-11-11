@@ -33,7 +33,7 @@ export const UserDetails = ({
               <p>Phone Number: <strong>{user.phoneNumber}</strong></p>
               <p>
                 Address:
-                <strong> {printAddress(user.addres)} </strong>
+                <strong> {printAddress(user.address)} </strong>
               </p>
 
               <p>Created on: <strong>{user.createdAt}</strong></p>
