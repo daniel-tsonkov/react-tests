@@ -1,9 +1,10 @@
 export const UserDetails = ({
+  onClose,
   user,
 }) => {
   return (
     <div className="overlay">
-      <div className="backdrop"></div>
+      <div className="backdrop" onclick={onClose} /> {/* има самозатваряне когато загуби фокус */}
       <div className="modal">
         <div className="detail-container">
           <header className="headers">

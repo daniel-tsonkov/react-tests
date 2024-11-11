@@ -18,13 +18,13 @@ export const UserList = ({
     }
 
     const detailsCloseHandler = () => {
-
+        setSelectedUser(null); //затваря прозореца
     }
 
     return (
         <div className="table-wrapper">
 
-            {selectedUser && <UserDetails user={selectedUser} />}
+            {selectedUser && <UserDetails user={selectedUser} onClose={detailsCloseHandler} />}
 
             <table className="table">
                 <thead>
