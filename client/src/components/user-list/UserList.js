@@ -29,6 +29,20 @@ export const UserList = ({
     const closeHandler = () => {
         setUserAction({ use: null, action: null }); //затваря прозореца
     }
+
+    const userCreateHandler = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const userData = Object.fromEntries(formData);
+
+        userService.create(userData)
+            .then(user => {
+                console.log(user);
+                closeHandler();
+            });
+    }
+
     return (
         <>
             <div className="table-wrapper">
@@ -57,6 +71,7 @@ export const UserList = ({
                 {userAction.action === UserAction.Add &&
                     <UserCreate
                         onClose={closeHandler}
+                        onUserCreate={userCreateHandler}
                     />
                 }
 
@@ -129,7 +144,7 @@ export const UserList = ({
                 </table>
             </div>
 
-            <button className="btn-add btn" onClick={userActionClickHandler(null, UserAction.Add)}>Add new user</button>
+            <button className="btn-add btn" onClick={() => userActionClickHandler(null, UserAction.Add)}>Add new user</button>
         </>
     );
 
