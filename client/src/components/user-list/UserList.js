@@ -21,14 +21,32 @@ export const UserList = ({
     const detailsClickHandler = (userId) => {
         userService.getOne(userId)
             .then(user => {
-                //setSelectedUser(user);
-                //setUserAction(UserAction.Details);
                 setUserAction({
                     user,
                     action: UserAction.Details
                 });
             });
     }
+
+    const editClickHandler = (userId) => {
+        userService.getOne(userId)
+            .then(user => {
+                setUserAction({
+                    user,
+                    action: UserAction.Edit
+                });
+            });
+    };
+
+    const deleteClickHandler = (userId) => {
+        userService.getOne(userId)
+            .then(user => {
+                setUserAction({
+                    user,
+                    action: UserAction.Delete
+                });
+            });
+    };
 
     const detailsCloseHandler = () => {
         setUserAction({ use: null, action: null }); //затваря прозореца
