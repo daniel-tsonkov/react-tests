@@ -1,7 +1,3 @@
-import { useState, useEffect } from "react";
-
-import * as userServices from './Services/userService'
-
 import { Header } from "./components/common/Header";
 import './App.css';
 import { Footer } from "./components/common/Footer";
@@ -27,14 +23,6 @@ settings as - Body, raw, JSON
 }*/
 
 function App() {
-  const [users, setusers] = useState([]);
-
-  useEffect(() => {
-    userServices.getAll()
-      .then(users => setusers(users))
-  }, []);
-
-  console.log(users);
 
   return (
     <div className="App">
@@ -48,7 +36,7 @@ function App() {
           <Search />
 
           {/* <!-- Table component --> */}
-          <UserList users={users} />
+          <UserList />
 
           {/* <!-- Pagination component  --> */}
           <div className="pagination position">

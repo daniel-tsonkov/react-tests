@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import * as userService from '../../Services/userService'
 
@@ -10,11 +10,14 @@ import { UserDelete } from "./user-delete/UserDelete";
 import { UserCreate } from "./user-create/UserCreate";
 
 
-export const UserList = ({
-    users,
-}) => {
-    // const [selectedUser, setSelectedUser] = useState(null);
+export const UserList = () => {
+    const [users, setusers] = useState([]);
     const [userAction, setUserAction] = useState({ use: null, action: null });
+
+    useEffect(() => {
+        userService.getAll()
+            .then(users => setusers(users))
+    }, []);
 
     const userActionClickHandler = (userId, actionType) => {
         userService.getOne(userId)
@@ -54,7 +57,7 @@ export const UserList = ({
 
         userService.create(userData)
             .then(user => {
-                console.log(user);
+                setusers(pldUsers => [...pldUsers, user]);
                 closeHandler();
             });
     }
