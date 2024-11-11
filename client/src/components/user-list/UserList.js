@@ -17,10 +17,14 @@ export const UserList = ({
             });
     }
 
+    const detailsCloseHandler = () => {
+
+    }
+
     return (
         <div className="table-wrapper">
 
-            {selectedUser && <UserDetails />}
+            {selectedUser && <UserDetails user={selectedUser} />}
 
             <table className="table">
                 <thead>
