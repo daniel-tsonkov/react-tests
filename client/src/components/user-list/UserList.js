@@ -5,15 +5,28 @@ import * as userService from '../../Services/userService'
 import { UserDetails } from "./user-details/UserDetails";
 import { UserItem } from "./user-item/UserItem";
 
+const UserAction = {
+    Details: 'details',
+    Edit: 'edit',
+    Delete: 'delete'
+}
+
 
 export const UserList = ({
     users,
 }) => {
-    const [selectedUser, setSelectedUser] = useState(null);
+    // const [selectedUser, setSelectedUser] = useState(null);
+    const [userAction, setUserAction] = useState({ use: null, action: null });
+
     const detailsClickHandler = (userId) => {
         userService.getOne(userId)
             .then(user => {
-                setSelectedUser(user);
+                //setSelectedUser(user);
+                //setUserAction(UserAction.Details);
+                setUserAction({
+                    user,
+                    action: UserAction.Details
+                });
             });
     }
 
