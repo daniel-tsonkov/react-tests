@@ -1,6 +1,6 @@
 export const UserDetails = ({
-  onClose,
   user,
+  onClose,
 }) => {
   return (
     <div className="overlay">
