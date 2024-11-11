@@ -1,7 +1,7 @@
 export const UserEdit = ({
   user,
   onClose,
-  onUserEdit
+  onUserEdit,
 }) => {
   return (
     <div className="overlay">
