@@ -1,4 +1,5 @@
 import { UserAction } from "../UserListConstants";
+import { Fragment } from "react";
 
 export const UserItem = ({
   user,
@@ -6,7 +7,7 @@ export const UserItem = ({
 }) => {
   const blankProfileUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png';
   return (
-    <tr>
+    <Fragment>
       <td>
         <img src={user.imageUrl || blankProfileUrl}
           alt={`${user.firstName}'s profile`} className="image" />
@@ -45,6 +46,6 @@ export const UserItem = ({
           </svg>
         </button>
       </td>
-    </tr>
+    </Fragment>
   );
 }
