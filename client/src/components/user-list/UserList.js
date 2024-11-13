@@ -33,28 +33,7 @@ export const UserList = () => {
         setUserAction({ use: null, action: null }); //затваря прозореца
     }
 
-    const userCreateHandler = (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.target);
-        const {
-            firstName,
-            lastName,
-            email,
-            phoneNumber,
-            imageUrl,
-            ...address
-        } = Object.fromEntries(formData);
-
-        const userData = {
-            firstName,
-            lastName,
-            email,
-            phoneNumber,
-            imageUrl,
-            address,
-        }
-
+    const userCreateHandler = (userData) => {
         userService.create(userData)
             .then(user => {
                 setusers(oldUsers => [...oldUsers, user]);
