@@ -23,7 +23,14 @@ export const UserCreate = ({
     }))
   };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
 
+    const { country, city, street, streetNumber, ...userData } = values;
+    userData.address = { country, city, street, streetNumber };
+
+    onUserCreate(userData);
+  }
 
   return (
     <div className="overlay">
@@ -41,7 +48,7 @@ export const UserCreate = ({
               </svg>
             </button>
           </header>
-          <form onSubmit={onUserCreate}>
+          <form onSubmit={submitHandler}>
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="firstName">First name</label>

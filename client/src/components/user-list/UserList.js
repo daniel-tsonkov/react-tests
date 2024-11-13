@@ -27,11 +27,17 @@ export const UserList = () => {
                     action: actionType
                 });
             });
-    }
+    };
+
+    const createUserOpenHandler = () => {
+        setUserAction({
+            action: UserAction.Add
+        });
+    };
 
     const closeHandler = () => {
         setUserAction({ use: null, action: null }); //затваря прозореца
-    }
+    };
 
     const userCreateHandler = (userData) => {
         userService.create(userData)
@@ -45,7 +51,7 @@ export const UserList = () => {
                 setusers(oldUsers => [...oldUsers, user]);
                 closeHandler();
             });
-    }
+    };
 
     return (
         <>
@@ -148,7 +154,7 @@ export const UserList = () => {
                 </table>
             </div>
 
-            <button className="btn-add btn" onClick={() => userActionClickHandler(null, UserAction.Add)}>Add new user</button>
+            <button className="btn-add btn" onClick={createUserOpenHandler}>Add new user</button>
         </>
     );
 
