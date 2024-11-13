@@ -1,7 +1,21 @@
+import { useState } from 'react';
+
 export const UserCreate = ({
   onClose,
   onUserCreate
 }) => {
+  const [values, setValues] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    imageUrl: '',
+    country: '',
+    city: '',
+    street: '',
+    streetNumber: '',
+  });
+
   return (
     <div className="overlay">
       <div className="backdrop" onClick={onClose}></div>
