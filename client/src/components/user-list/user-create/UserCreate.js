@@ -4,7 +4,7 @@ export const UserCreate = ({
   onClose,
   onUserCreate
 }) => {
-  const [firstNameHasError, setFirstNameHasError] = useState('');
+  const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -33,11 +33,17 @@ export const UserCreate = ({
     onUserCreate(userData);
   };
 
-  const validateFirstName = () => {
-    if (values.firstName.length < 3) {
-      setFirstNameHasError(true);
+  const minLength = (e, bound) => {
+    if (values[e.target.name].length < bound) {
+      setErrors(state => ({
+        ...state,
+        [e.target.name]: true
+      }));
     } else {
-      setFirstNameHasError(false);
+      setErrors(state => ({
+        ...state,
+        [e.target.name]: false
+      }));
     }
   };
 
@@ -63,9 +69,9 @@ export const UserCreate = ({
                 <label htmlFor="firstName">First name</label>
                 <div className="input-wrapper">
                   <span><i className="fa-solid fa-user"></i></span>
-                  <input id="firstName" name="firstName" type="text" value={values.firstName} onChange={changeHandler} onBlur={validateFirstName} />
+                  <input id="firstName" name="firstName" type="text" value={values.firstName} onChange={changeHandler} onBlur={(e) => minLength(e, 3)} />
                 </div>
-                {firstNameHasError &&
+                {errors.firstName &&
                   <p className="form-error">
                     First name should be at least 3 characters long!
                   </p>
