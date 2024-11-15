@@ -34,18 +34,22 @@ export const UserCreate = ({
   };
 
   const minLength = (e, bound) => {
-    if (values[e.target.name].length < bound) {
-      setErrors(state => ({
-        ...state,
-        [e.target.name]: true
-      }));
-    } else {
-      setErrors(state => ({
-        ...state,
-        [e.target.name]: false
-      }));
-    }
+    setErrors(state => ({
+      ...state,
+      [e.target.name]: values[e.target.name].length < bound,
+    }));
   };
+
+  const isPositive = (e) => {
+    let number = Number(e.target.value)
+
+    setErrors(state => ({
+      ...state,
+      [e.target.name]: number < 0,
+    }));
+  };
+
+  const isFormValid = !Object.values(errors).come(x => x);
 
   return (
     <div className="overlay">
@@ -81,11 +85,13 @@ export const UserCreate = ({
                 <label htmlFor="lastName">Last name</label>
                 <div className="input-wrapper">
                   <span><i className="fa-solid fa-user"></i></span>
-                  <input id="lastName" name="lastName" type="text" value={values.lastName} onChange={changeHandler} />
+                  <input id="lastName" name="lastName" type="text" value={values.lastName} onChange={changeHandler} onBlur={(e) => minLength(e, 3)} />
                 </div>
-                <p className="form-error">
-                  Last name should be at least 3 characters long!
-                </p>
+                {errors.lastName &&
+                  <p className="form-error">
+                    Last name should be at least 3 characters long!
+                  </p>
+                }
               </div>
             </div>
 
@@ -122,21 +128,25 @@ export const UserCreate = ({
                 <label htmlFor="country">Country</label>
                 <div className="input-wrapper">
                   <span><i className="fa-solid fa-map"></i></span>
-                  <input id="country" name="country" type="text" value={values.country} onChange={changeHandler} />
+                  <input id="country" name="country" type="text" value={values.country} onChange={changeHandler} onBlur={(e) => minLength(e, 2)} />
                 </div>
-                <p className="form-error">
-                  Country should be at least 2 characters long!
-                </p>
+                {errors.country &&
+                  <p className="form-error">
+                    Country should be at least 2 characters long!
+                  </p>
+                }
               </div>
               <div className="form-group">
                 <label htmlFor="city">City</label>
                 <div className="input-wrapper">
                   <span><i className="fa-solid fa-city"></i></span>
-                  <input id="city" name="city" type="text" value={values.city} onChange={changeHandler} />
+                  <input id="city" name="city" type="text" value={values.city} onChange={changeHandler} onBlur={(e) => minLength(e, 3)} />
                 </div>
-                <p className="form-error">
-                  City should be at least 3 characters long!
-                </p>
+                {errors.city &&
+                  <p className="form-error">
+                    City should be at least 3 characters long!
+                  </p>
+                }
               </div>
             </div>
 
@@ -145,21 +155,25 @@ export const UserCreate = ({
                 <label htmlFor="street">Street</label>
                 <div className="input-wrapper">
                   <span><i className="fa-solid fa-map"></i></span>
-                  <input id="street" name="street" type="text" value={values.street} onChange={changeHandler} />
+                  <input id="street" name="street" type="text" value={values.street} onChange={changeHandler} onBlur={(e) => minLength(e, 3)} />
                 </div>
-                <p className="form-error">
-                  Street should be at least 3 characters long!
-                </p>
+                {errors.street &&
+                  <p className="form-error">
+                    Street should be at least 3 characters long!
+                  </p>
+                }
               </div>
               <div className="form-group">
                 <label htmlFor="streetNumber">Street number</label>
                 <div className="input-wrapper">
                   <span><i className="fa-solid fa-house-chimney"></i></span>
-                  <input id="streetNumber" name="streetNumber" type="text" value={values.streetNumber} onChange={changeHandler} />
+                  <input id="streetNumber" name="streetNumber" type="text" value={values.streetNumber} onChange={changeHandler} onBlur={isPositive} />
                 </div>
-                <p className="form-error">
-                  Street number should be a positive number!
-                </p>
+                {errors.name &&
+                  <p className="form-error">
+                    Street number should be a positive number!
+                  </p>
+                }
               </div>
             </div>
             <div id="form-actions">
