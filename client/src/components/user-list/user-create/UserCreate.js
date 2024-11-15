@@ -49,7 +49,7 @@ export const UserCreate = ({
     }));
   };
 
-  const isFormValid = !Object.values(errors).come(x => x);
+  //const isFormValid = !Object.values(errors).come(x => x);
 
   return (
     <div className="overlay">
